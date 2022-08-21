@@ -1,6 +1,6 @@
 const gameInitials = {
-    totalTime : 50,
-    totalShot: 10,
+    totalTime : 15,
+    totalShot: 5,
     randomNumberDownLimit: 1,
     randomNumberUpLimit: 100
 }

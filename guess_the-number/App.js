@@ -37,6 +37,7 @@ export default function App() {
           gameResult={gameResult}
           totalPoint={totalPoint}
           timer={timer}
+          setTimer={setTimer}
           shot={shot}
           randomNumber={randomNumber}
         />

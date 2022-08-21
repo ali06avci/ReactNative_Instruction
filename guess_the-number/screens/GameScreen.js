@@ -1,4 +1,5 @@
 import {
+  Keyboard,
   StyleSheet,
   Text,
   TextInput,
@@ -59,7 +60,7 @@ const GameScreen = (props) => {
       setTimer((prev) => prev - 1);
     }, 1000);
 
-    inputRef.current.focus();
+    //setFocus();
 
     return () => {
       clearInterval(interval);
@@ -122,34 +123,35 @@ const GameScreen = (props) => {
   };
 
   const setFocus = () => {
-    console.log("sdfsdf");
     inputRef.current.focus();
   };
 
   return (
-    <View style={styles.container}>
-      <Header title="Guess the number" />
-      <View style={styles.content}>
-        <ScoreBoard timer={timer} shot={shot} />
-        <Spacer />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Header title="Guess the number" />
+        <View style={styles.content}>
+          <ScoreBoard timer={timer} shot={shot} />
+          <Spacer />
 
-        <TouchableWithoutFeedback onPressIn={setFocus}>
-          <Text>Card a tıklanamıyor</Text>
-        </TouchableWithoutFeedback>
-          <Card>
-            <Text style={styles.text}>Type a number</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="number-pad"
-              maxLength={gameInitials.randomNumberUpLimit.toString().length}
-              value={number}
-              onChangeText={(text) => setNumber(text)}
-              ref={inputRef}
-            />
-            <IconButton title="GUESS" icon="target" onPress={handleGuess} />
-          </Card>
+          <TouchableWithoutFeedback onPress={setFocus}>
+            <Card>
+              <Text style={styles.text}>Type a number</Text>
+              <TextInput
+                style={styles.input}
+                keyboardType="number-pad"
+                maxLength={gameInitials.randomNumberUpLimit.toString().length}
+                value={number}
+                onChangeText={(text) => setNumber(text)}
+                onSubmitEditing={handleGuess}
+                ref={inputRef}
+              />
+              <IconButton title="GUESS" icon="target" onPress={handleGuess} />
+            </Card>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
