@@ -1,4 +1,12 @@
-import { Text, View, StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView,
+  Button,
+} from "react-native";
+import Index from "./components/00-index/index";
 import Flex1 from "./components/01-flex/flex1";
 import Flex2 from "./components/01-flex/flex2";
 import Flex3 from "./components/01-flex/flex3";
@@ -27,51 +35,25 @@ import Prsbl from "./components/10-buttons/pressable";
 import Touchables from "./components/10-buttons/touchables";
 import Counter from "./components/11-practise-counter/counter";
 import CategoryManager from "./components/12-practise-category/category-manager";
+import MyDimensions from "./components/13-api/dimensions";
 
+import Debugging from "./components/14-debugging/debugging";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-      }}
-    >
-      {/*       
-<Flex1/>
-<Flex2/>
-<Flex3/>
-<Flex4/>
-<Flex5/>
-<Flex6/>
-<Flex7 />
-<Flex8/>
-<Internal/>
-<External/>
-<Mixed/>
-<Flex9/>
-<Practise1/>
-<Position />
-<PractiseView/>
-<PractiseScrollView/>
-<PractiseFlatList/>
-<FlatListComp/>
-<ExternalImage/>
-<LocalImportImage/>
-<LocalRequireImage/>
-<BackgroundImage/>
-<Icon/>
-<Touchables/>
-<Prsbl/>
-<CustomComponent/>
-<Counter/>
- */}
-      <CategoryManager/>
-
-      <StatusBar backgroundColor="red" barStyle="dark-content" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Index" component={Index} />
+        <Stack.Screen name="Flex1" component={Flex1} />
+        <Stack.Screen name="Flex2" component={Flex2} />
+        <Stack.Screen name="Flex3" component={Flex3} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
